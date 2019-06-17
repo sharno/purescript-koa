@@ -6,7 +6,7 @@ exports.mkApplication = function() {
 }
 
 exports.useImpl = function(app, f) {
-    app.use(f);
+    app.use(function (ctx) { Object.assign(ctx, f(ctx)); });
     return app;
 }
 
